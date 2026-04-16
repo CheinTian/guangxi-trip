@@ -153,7 +153,8 @@ const dayBookingReminders = {
     { name: "《印象·刘三姑》", type: "must", desc: "必须提前5-10天预订" }
   ],
   4: [
-    { name: "相公山日出", type: "optional", desc: "日出视天气而定，阴雨天可取消" }
+    { name: "相公山日出", type: "optional", desc: "日出视天气而定，阴雨天可取消" },
+    { name: "世外桃源", type: "recommended", desc: "建议提前1-3天预订" }
   ],
   5: [
     { name: "遇龙河竹笏", type: "recommended", desc: "建议提前1-3天预订" },
@@ -185,7 +186,8 @@ const attractions = [
   { id: 17, name: "老寨山", category: "scenic", day: 5, lat: 24.9180, lng: 110.5500, type: "登山/日落", description: "俯瞰兴坪漓江大拐弯，千里江山图日落绝佳位置", price: "免费", bestTime: "日落前1小时", tips: "徒步路线较险，建议穿运动鞋，日落绝美" },
   { id: 18, name: "银子岩", category: "scenic", day: 4, lat: 24.7120, lng: 110.4550, type: "溶洞/奇观", description: "阳朔最美溶洞，钟乳石洁白如银，游程约2公里", price: "65元", bestTime: "上午或下午", tips: "洞内恒温18度，带件薄外套" },
   { id: 19, name: "大榕树", category: "scenic", day: 4, lat: 24.7550, lng: 110.4900, type: "古树/爱情", description: "1400年古榕树，《刘三姐》电影取景地", price: "20元", bestTime: "下午", tips: "十里画廊沿线，可顺路游览" },
-  { id: 20, name: "蝴蝶泉", category: "scenic", day: 4, lat: 24.7680, lng: 110.4800, type: "溶洞/奇观", description: "喀斯特溶洞与蝴蝶标本馆，洞口形似蝴蝶", price: "55元", bestTime: "上午", tips: "十里画廊入口附近" },
+  { id: 20, name: "蝴蝶泉", category: "scenic", day: 3, lat: 24.7680, lng: 110.4800, type: "溶洞/奇观", description: "喀斯特溶洞与蝴蝶标本馆，洞口形似蝴蝶", price: "55元", bestTime: "上午", tips: "十里画廊入口附近" },
+  { id: 21, name: "世外桃源", category: "scenic", day: 4, lat: 24.8320, lng: 110.4450, type: "湖光/文化", description: "陶渊明笔下的桃花源，乘小船穿越溶洞，体验侗族壮族风情", price: "60元", bestTime: "下午", tips: "小船游览约30分钟，有侗族风雨桥和壮族鼓楼" },
 ]
 
 // 地图标记数据 - 按天组织
@@ -217,9 +219,7 @@ const mapMarkersByDay = {
   4: [
     { name: "暮云悠墅酒店", lat: 24.7760, lng: 110.4980, type: "hotel" },
     { name: "相公山", lat: 24.9500, lng: 110.5200, type: "sunrise" },
-    { name: "银子岩", lat: 24.7120, lng: 110.4550, type: "attraction" },
-    { name: "大榕树", lat: 24.7550, lng: 110.4900, type: "attraction" },
-    { name: "蝴蝶泉", lat: 24.7680, lng: 110.4800, type: "attraction" },
+    { name: "世外桃源", lat: 24.8320, lng: 110.4450, type: "attraction" },
     { name: "阳朔西街", lat: 24.7780, lng: 110.4960, type: "attraction" },
   ],
   5: [
@@ -254,7 +254,7 @@ const routeLines = {
   3: [[25.2695, 110.2880], [25.3000, 110.3200], [24.7780, 110.4960],
        [24.7580, 110.4850], [24.7450, 110.4950], [24.7780, 110.5050]],
   4: [[24.7760, 110.4980], [24.9500, 110.5200], [24.7760, 110.4980], 
-       [24.7120, 110.4550], [24.7550, 110.4900], [24.7680, 110.4800]],
+       [24.8320, 110.4450], [24.7780, 110.4960]],
   5: [[24.7760, 110.4980], [24.7550, 110.4650], [24.7450, 110.4850], 
        [24.9180, 110.5450], [24.9180, 110.5500]],
   6: [[24.7760, 110.4980], [24.7780, 110.5050], [25.2180, 110.0400]]
@@ -344,20 +344,21 @@ const itinerary = [
   },
   {
     day: 4,
-    title: "相公山日出 · 银子岩奇观",
-    theme: "日出云海 · 地下奇观",
+    title: "相公山日出 · 世外桃源",
+    theme: "日出云海 · 陶渊明笔下的桃花源",
     color: "#22c55e",
-    highlights: ["相公山日出", "银子岩溶洞", "十里画廊", "阳朔西街"],
+    highlights: ["相公山日出", "世外桃源", "阳朔西街", "漓江风光"],
     schedule: [
       { time: "05:00", activity: "早起前往相公山（约40分钟车程），需带手电筒", icon: "sunrise" },
       { time: "05:30", activity: "登山至观景台占好位置", icon: "walk" },
       { time: "06:00", activity: "相公山日出——俯瞰漓江第一湾，云海与晨光交织", icon: "camera" },
       { time: "07:30", activity: "下山返回酒店补眠", icon: "hotel" },
       { time: "10:00", activity: "酒店早餐，收拾行装", icon: "food" },
-      { time: "11:00", activity: "前往银子岩（约30分钟车程）", icon: "car" },
-      { time: "11:30", activity: "游览银子岩溶洞——钟乳石洁白如银，游程约2公里", icon: "scenic" },
-      { time: "14:00", activity: "返回十里画廊，游览蝴蝶泉、大榕树", icon: "scenic" },
-      { time: "16:00", activity: "工农桥附近品尝咖啡，欣赏遇龙河风光", icon: "coffee" },
+      { time: "11:30", activity: "前往世外桃源景区（约20分钟车程）", icon: "car" },
+      { time: "12:00", activity: "游览世外桃源——乘小船穿越溶洞，感受陶渊明笔下桃花源", icon: "scenic" },
+      { time: "14:00", activity: "景区内午餐，品尝农家菜", icon: "food" },
+      { time: "15:30", activity: "漫步侗族风雨桥、壮族鼓楼，体验少数民族风情", icon: "culture" },
+      { time: "17:00", activity: "返回阳朔，工农桥附近欣赏遇龙河风光", icon: "camera" },
       { time: "18:00", activity: "阳朔西街晚餐，品尝啤酒鱼", icon: "food" },
       { time: "20:00", activity: "西街购物，购买特产伴手礼", icon: "shopping" },
       { time: "21:30", activity: "返回酒店休息", icon: "hotel" }
